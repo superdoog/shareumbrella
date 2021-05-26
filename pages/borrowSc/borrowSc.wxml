@@ -1,0 +1,20 @@
+<view class="page-body">
+  <form action="">
+    <view>
+      <view>借伞点： {{pname}}</view>
+    </view>
+
+    <view class="page-section">
+      <view>伞扫码<view class="button-sp-area"><button bindtap="scanCode" class="mini-btn" size="mini" plain="true"
+            type="primary">扫码</button>
+        </view>
+      </view>
+      <view><input class="weui-input" placeholder="伞编码" type="number" value="{{umbrellaId}}" /></view>
+    </view>
+
+    <view class="btn-sp-area">
+      <button style="margin: 30rpx 0" type="primary" formType="submit">Submit</button>
+    </view>
+  </form>
+
+</view>

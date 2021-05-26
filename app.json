@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/borrow/borrow",
+    "pages/reback/reback",
+    "pages/borrowSc/borrowSc",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/borrow/borrow",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/reback/reback",
+        "text": "还伞"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

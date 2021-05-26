@@ -1,0 +1,68 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+page {
+  background-color: #F8F8F8;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+.page-body {
+  padding: 20rpx 0;
+}
+
+.table, .table div {
+  margin: 0 auto;
+  }
+  /* 合并边框 */
+  .table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse; 
+  box-sizing: border-box;
+  }
+  /* 此元素会作为一个表格行显示（类似 <tr>） */
+  .table-tr {
+  display: table-row; 
+  height: 92rpx;
+  }
+  /* 此元素会作为一个表格单元格显示（类似 <td> 和 <th>） */
+  .table-th {
+  display: table-cell; 
+  font-weight: bold;
+  border: 1rpx solid gray;
+  text-align: center;
+  vertical-align: middle;
+  }
+  
+  .table-td {
+  display: table-cell;
+  border: 1rpx solid gray;
+  text-align: center;
+  vertical-align: middle;
+  }
+
+  /*按钮*/
+  button{
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+  }
+  .button-sp-area{
+    margin: 0 auto;
+    width: 60%;
+  }
+  .mini-btn{
+    margin-right: 10rpx;
+  }
+.page-section{
+  margin-top: 100rpx;
+  margin-bottom: 200rpx;
+}

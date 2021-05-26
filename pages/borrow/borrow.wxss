@@ -1,0 +1,28 @@
+/* pages/borrow/borrow.wxss */
+.title{
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  font-size: 38rpx;
+}
+.label{
+  display: inline-flex;
+  margin-top: 20rpx;
+}
+.label text{
+  width: 180rpx;
+  text-align: center;
+}
+
+.content{
+  width: 750rpx;
+  display: inline-flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top:10rpx; 
+}
+.content text{
+  width: 180rpx;
+}

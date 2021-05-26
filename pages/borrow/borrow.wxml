@@ -1,0 +1,43 @@
+<!--pages/borrow/borrow.wxml-->
+<view class="table page-body">
+  <view class="page-section">
+    <view class="table-tr">
+      <view class="table-th">借伞点</view>
+      <view class="table-th">余量</view>
+      <view class="table-th"></view>
+    </view>
+    <view class="table-tr" wx:for="{{arr}}">
+      <view class="table-td">{{item.pname}}</view>
+      <view class="table-td"> {{item.stock}}</view>
+      <view class="table-td button-sp-area"><button bindtap='gotoSC' class="mini-btn" size="mini" plain="true"
+          type="primary" data-value="{{item.pname}}">从这借</button></view>
+    </view>
+  </view>
+
+
+
+  <view class='title'>
+          <text>借伞点信息</text>
+       </view>
+       <view class='label'>
+          <text>编号</text>
+          <text>名字</text>
+          <text>余量</text>
+          <text>操作</text>
+       </view>
+  <scroll-view scroll-y="true">
+    <view>
+      <block wx:for='{{list}}'>
+        <view class='content'>
+        <text >{{item.pid}}</text>
+        <text >{{item.pname}}</text>
+         <text>{{item.stock}}</text> 
+         <view class="table-td button-sp-area"><button bindtap='gotoSC' class="mini-btn" size="mini" plain="true"
+          type="primary" data-value="{{item}}">从这借</button></view>
+        </view>      
+      </block>
+    </view>
+  </scroll-view>
+
+
+</view>
