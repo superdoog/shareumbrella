@@ -5,9 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pointId: "",
-    umbrellaId: ""
-
+    pid: "",
+    umbrellaId: "",
+    inputValue: "",
+    rebackUrl: 'http://localhost:8080/reback'
+  },
+  bindKeyInput: function (e) {
+    switch (e.detail.value) {
+      case "1":
+        this.setData({
+          inputValue: "竹一"
+        })
+        break;
+      case "2":
+        this.setData({
+          inputValue: "康二"
+        })
+        break;
+      case "3":
+        this.setData({
+          inputValue: "桂三"
+        })
+        break;
+      case "4":
+        this.setData({
+          inputValue: "梅四"
+        })
+        break;
+      case "5":
+        this.setData({
+          inputValue: "榕五"
+        })
+        break;
+      default:
+        this.setData({
+          inputValue: "UNKNOW"
+        })
+        break;
+    };
   },
   scanpCode: function () {
     var that = this;
@@ -15,7 +50,7 @@ Page({
       success(res) { //扫描成功
         console.log(res) //输出回调信息
         that.setData({
-          pointId: res.result
+          pid: res.result
         });
         wx.showToast({
           title: '成功',
@@ -54,45 +89,41 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   *  表单功能
    */
-  onHide: function () {
+  formSubmit: function (e) {
+    var that = this;
+    var pid = e.detail.value.pid; //获取表数据
+    var uid = e.detail.value.uid;
+    var url = that.data.rebackUrl;
 
-  },
+    wx.request({
+      url: url,
+      data: { pid: pid, uid: uid },
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        var result = res.statusCode;
+        var toastText = "操作成功";
+        if (result != 200) {
+          toastText = "操作失败！";
+        }
+        wx.showToast({
+          title: toastText,
+          icon: '',
+          duration: 3000
+        });
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+        wx.switchTab({
+          url: "/pages/borrow/borrow",
+        })
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      }
+    })
   }
 })

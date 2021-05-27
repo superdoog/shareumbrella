@@ -14,7 +14,7 @@
     </view>
 
     <view class="btn-sp-area">
-      <button style="margin: 30rpx 0" type="primary" formType="submit">Submit</button>
+      <button style="margin: 30rpx 200rpx" type="primary" formType="submit">Submit</button>
     </view>
   </form>
 

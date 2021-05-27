@@ -107,11 +107,7 @@ Page({
         wx.switchTab({
           url: "/pages/borrow/borrow",
         })
-        // if(that.data.areaId=undefined){
-        //   wx.redirectTo({
-        //     url: '../list/list',
-        //   })
-        // }
+
       }
     })
   }
