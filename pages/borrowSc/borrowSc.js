@@ -5,8 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pid: "",
     pname: "",
-    umbrellaId: ""
+    umbrellaId: "",
+    borrowUrl: 'http://localhost:8080/borrow'
   },
   scanCode: function () {
     var that = this;
@@ -29,10 +31,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
-    var pname = JSON.parse(options.pname);
+    var that = this;
+    if (options.pid == undefined) {
+      return;
+    }
     that.setData({
-      pname: pname
+      pid: options.pid,
+    });
+
+    wx.request({
+      url: 'http://localhost:8080/byPid',
+      data: { pid: options.pid },
+      method: 'GET',
+      success: function (res) {
+        console.log(res);
+        var area = res.data;
+        if (area == undefined) {
+          var text = '获取数据失败';
+          wx.showToast({
+            title: text,
+            icon: '',
+            duration: 3000
+          });
+        } else {
+          that.setData({
+            pname: area.pname
+          })
+        }
+      }
     })
   },
 
@@ -49,39 +75,44 @@ Page({
   onShow: function () {
 
   },
-
   /**
-   * 生命周期函数--监听页面隐藏
+   *  表单功能
    */
-  onHide: function () {
+  formSubmit: function (e) {
+    var that = this;
+    var pid = e.detail.value.pid; //获取表数据
+    var uid = e.detail.value.uid;
+    var url = that.data.borrowUrl;
 
-  },
+    wx.request({
+      url: url,
+      data: { pid: pid, uid: uid },
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        var result = res.statusCode;
+        var toastText = "操作成功";
+        if (result != 200) {
+          toastText = "操作失败！";
+        }
+        wx.showToast({
+          title: toastText,
+          icon: '',
+          duration: 3000
+        });
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+        wx.switchTab({
+          url: "/pages/borrow/borrow",
+        })
+        // if(that.data.areaId=undefined){
+        //   wx.redirectTo({
+        //     url: '../list/list',
+        //   })
+        // }
+      }
+    })
   }
 })

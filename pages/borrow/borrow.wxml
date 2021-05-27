@@ -1,6 +1,6 @@
 <!--pages/borrow/borrow.wxml-->
 <view class="table page-body">
-  <view class="page-section">
+  <!-- <view class="page-section">
     <view class="table-tr">
       <view class="table-th">借伞点</view>
       <view class="table-th">余量</view>
@@ -12,9 +12,7 @@
       <view class="table-td button-sp-area"><button bindtap='gotoSC' class="mini-btn" size="mini" plain="true"
           type="primary" data-value="{{item.pname}}">从这借</button></view>
     </view>
-  </view>
-
-
+  </view> -->
 
   <view class='title'>
           <text>借伞点信息</text>
@@ -30,10 +28,10 @@
       <block wx:for='{{list}}'>
         <view class='content'>
         <text >{{item.pid}}</text>
-        <text >{{item.pname}}</text>
-         <text>{{item.stock}}</text> 
-         <view class="table-td button-sp-area"><button bindtap='gotoSC' class="mini-btn" size="mini" plain="true"
-          type="primary" data-value="{{item}}">从这借</button></view>
+        <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.pname}}</text>
+         <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.stock}}</text> 
+         <view class="button-sp-area"><button bindtap='gotoSC' class="mini-btn" size="mini" plain="true"
+          type="primary" data-value="{{item.pid}}">从这借</button></view>
         </view>      
       </block>
     </view>

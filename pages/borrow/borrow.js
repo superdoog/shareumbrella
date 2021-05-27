@@ -6,11 +6,11 @@ Page({
    */
   data: {
 
-    arr: [{ pid: "", pname: "竹一", stock: "" },
-    { pid: "", pname: "康二", stock: "" },
-    { pid: "", pname: "桂三", stock: "" },
-    { pid: "", pname: "梅四", stock: "" },
-    { pid: "", pname: "榕五", stock: "" }],
+    // arr: [{ pid: "", pname: "竹一", stock: "" },
+    // { pid: "", pname: "康二", stock: "" },
+    // { pid: "", pname: "桂三", stock: "" },
+    // { pid: "", pname: "梅四", stock: "" },
+    // { pid: "", pname: "榕五", stock: "" }],
     list:[]
   },
 
@@ -19,7 +19,7 @@ Page({
     var str = JSON.stringify(value)
     // console.log("value："+value) 
     wx.navigateTo({
-      url: '/pages/borrowSc/borrowSc?pname=' + str,
+      url: '/pages/borrowSc/borrowSc?pid=' + str,
       events: {
         acceptDataFromOpenedPage: function (data) {
           console.log(data)
@@ -32,20 +32,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    wx.stopPullDownRefresh() //刷新完成后停止下拉刷新动效
     var that=this;
     wx.request({
       url: 'http://localhost:8080/queryAll',
@@ -70,6 +57,20 @@ Page({
   },
 
   /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+   
+  },
+
+  /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
@@ -87,7 +88,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    this.onLoad(); //重新加载onLoad()
   },
 
   /**

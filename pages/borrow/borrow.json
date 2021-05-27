@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "借伞"
+  "navigationBarTitleText": "借伞",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

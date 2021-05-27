@@ -1,15 +1,16 @@
 <view class="page-body">
-  <form action="">
+  <form bindsubmit="formSubmit">
     <view>
       <view>借伞点： {{pname}}</view>
     </view>
 
     <view class="page-section">
+      <input hidden="true" name="pid" value="{{pid}}"/>
       <view>伞扫码<view class="button-sp-area"><button bindtap="scanCode" class="mini-btn" size="mini" plain="true"
             type="primary">扫码</button>
         </view>
       </view>
-      <view><input class="weui-input" placeholder="伞编码" type="number" value="{{umbrellaId}}" /></view>
+      <view><input class="weui-input" name="uid" placeholder="伞编码" type="number" value="{{umbrellaId}}" /></view>
     </view>
 
     <view class="btn-sp-area">
