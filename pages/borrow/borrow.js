@@ -11,7 +11,7 @@ Page({
     // { pid: "", pname: "桂三", stock: "" },
     // { pid: "", pname: "梅四", stock: "" },
     // { pid: "", pname: "榕五", stock: "" }],
-    list:[]
+    list: []
   },
 
   gotoSC: function (event) {
@@ -33,23 +33,23 @@ Page({
    */
   onLoad: function (options) {
     wx.stopPullDownRefresh() //刷新完成后停止下拉刷新动效
-    var that=this;
+    var that = this;
     wx.request({
       url: 'http://localhost:8080/queryAll',
-      method:'GET',
-      data:{},
-      success:function(res){
-        var list=res.data;
-        if(list==null){
-          var toastText='获取数据失败';
+      method: 'GET',
+      data: {},
+      success: function (res) {
+        var list = res.data;
+        if (list == null) {
+          var toastText = '获取数据失败';
           wx.showToast({
             title: toastText,
-            icon:'',
-            duration:2000 //弹出时间
+            icon: '',
+            duration: 2000 //弹出时间
           })
-        }else{
+        } else {
           that.setData({
-            list:list
+            list: list
           })
         }
       }
@@ -57,31 +57,11 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+    var that = this;
+    this.onLoad(); //重新加载onLoad()
   },
 
   /**
@@ -92,17 +72,4 @@ Page({
     this.onLoad(); //重新加载onLoad()
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

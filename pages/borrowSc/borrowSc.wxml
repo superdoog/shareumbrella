@@ -5,7 +5,7 @@
     </view>
 
     <view class="page-section">
-      <input hidden="true" name="pid" value="{{pid}}"/>
+      <input hidden="true" name="pid" value="{{pid}}" />
       <view>伞扫码<view class="button-sp-area"><button bindtap="scanCode" class="mini-btn" size="mini" plain="true"
             type="primary">扫码</button>
         </view>

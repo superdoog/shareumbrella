@@ -15,24 +15,25 @@
   </view> -->
 
   <view class='title'>
-          <text>借伞点信息</text>
-       </view>
-       <view class='label'>
-          <text>编号</text>
-          <text>名字</text>
-          <text>余量</text>
-          <text>操作</text>
-       </view>
+    <text>借伞点信息</text>
+  </view>
+  <view class='label'>
+    <text>编号</text>
+    <text>名字</text>
+    <text>余量</text>
+    <text>操作</text>
+  </view>
   <scroll-view scroll-y="true">
     <view>
       <block wx:for='{{list}}'>
         <view class='content'>
-        <text >{{item.pid}}</text>
-        <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.pname}}</text>
-         <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.stock}}</text> 
-         <view class="button-sp-area"><button bindtap='gotoSC' class="mini-btn" size="mini" plain="true"
-          type="primary" data-value="{{item.pid}}">从这借</button></view>
-        </view>      
+          <text>{{item.pid}}</text>
+          <text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.pname}}</text>
+          <text
+            decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.stock}}</text>
+          <view class="button-sp-area"><button bindtap='gotoSC' class="mini-btn" size="mini" plain="true" type="primary"
+              data-value="{{item.pid}}">从这借</button></view>
+        </view>
       </block>
     </view>
   </scroll-view>
