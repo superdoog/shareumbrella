@@ -40,6 +40,42 @@ Page({
     })
   },
 
+  reback: function (e) {
+    var that = this;
+    var uid = e.detail.value.uid;
+    var pid = e.detail.value.pid;
+    wx.request({
+      url: 'http://localhost:8080/reback',
+      method: 'GET',
+      data: {
+        pid: pid,
+        uid: uid
+      },
+      success: function (res) {
+        var resultCode = res.statusCode;
+        if (resultCode == 200) {
+          var toastText = '还伞成功';
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          });
+          wx.switchTab({
+            url: '/pages/borrow/borrow',
+          });
+
+        } else {
+          var toastText = '还伞失败';
+          wx.showToast({
+            title: toastText,
+            icon: 'loding',
+            duration: 2000 //弹出时间
+          })
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -48,51 +84,11 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    this.onLoad(); //重新加载onLoad()
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

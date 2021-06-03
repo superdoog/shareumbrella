@@ -1,26 +1,27 @@
 <view class="page-body">
 
-  <form>
+  <form bindsubmit="reback">
     <view class="page-section">
-      <view>还伞点扫码<view class="button-sp-area"><button  bindtap="scanpCode" class="mini-btn" size="mini" plain="true"
+      <view>还伞点扫码<view class="button-sp-area"><button bindtap="scanpCode" class="mini-btn" size="mini" plain="true"
             type="primary">扫码</button>
         </view>
       </view>
-      <view><input class="weui-input" placeholder="还伞点编码" type="number" value="{{pointId}}"/></view>
+      <view><input class="weui-input" name="pid" placeholder="还伞点编码" type="number" value="{{pointId}}" /></view>
     </view>
 
 
     <view class="page-section">
-      <view>伞扫码<view class="button-sp-area"><button bindtap="scanuCode" class="mini-btn" size="mini" plain="true" type="primary" >扫码</button>
+      <view>伞扫码<view class="button-sp-area"><button bindtap="scanuCode" class="mini-btn" size="mini" plain="true"
+            type="primary">扫码</button>
         </view>
       </view>
-      <view><input class="weui-input" placeholder="伞编码" type="number" value="{{umbrellaId}}"/></view>
+      <view><input class="weui-input" name="uid" placeholder="伞编码" type="number" value="{{umbrellaId}}" /></view>
     </view>
 
     <view class="btn-sp-area">
-        <button style="margin: 30rpx 0" type="primary" formType="submit">Submit</button>
-        <button style="margin: 30rpx 0" type="default" formType="reset">Reset</button>
-      </view>
+      <button style="margin: 30rpx 0" type="primary" formType="submit">Submit</button>
+      <button style="margin: 30rpx 0" type="default" formType="reset">Reset</button>
+    </view>
   </form>
 
 
