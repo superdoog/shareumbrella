@@ -1,0 +1,24 @@
+<wxs src="../../utils/status.wxs" module="status" />
+<view
+  style="width: 750rpx; background: #d1d1d1; min-height: 100px; height: 100%; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+
+  <view wx:for="{{recordList}}" wx:for-index="index" wx:for-item="item">
+    <view style="display:flex; flex-direction:column; min-height: 150px; padding: 10px; margin-bottom: 10px;">
+      <view style="background-color: #F1F1F1; flex: 1;">
+
+        <view style="display:flex; flex-direction:column; min-height: 150px; padding: 10px; margin-bottom: 10px;">
+
+          <view style="background-color: #E6E6E6; flex: 1;">订单号：{{item.rid}}</view>
+          <view style="background-color: #F1F1F1; flex: 1;">借伞点：{{status.getPointName(item.pid)}}</view>
+          <view style="background-color: #E6E6E6; flex: 1;">伞编号：{{item.uid}}</view>
+          <view style="background-color: #F1F1F1; flex: 1;">status：{{status.getStatus(item.status)}}</view>
+          <view class="line"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+
+</view>

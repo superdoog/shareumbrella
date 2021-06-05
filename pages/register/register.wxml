@@ -1,0 +1,27 @@
+<!--pages/register/register.wxml-->
+<view class="page-body">
+  <view class="header">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+
+  <form bindsubmit="formSubmit">
+    <view class="inputView">
+      <label class="loginLabel">用户名</label>
+      <input name="userName" class="inputText" placeholder="{{userInfo.nickName}}" value="{{userInfo.nickName}}" />
+    </view>
+    <view class="line"></view>
+
+    <view class="inputView">
+      <label class="loginLabel">密码</label>
+      <input name="password" class="inputText" password="true" placeholder="请输入密码" />
+    </view>
+    <view class="line"></view>
+
+    <view class="btn-sp-area">
+      <button style="margin: 30rpx 200rpx" type="primary" formType="submit">Submit</button>
+      <button style="margin: 30rpx 200rpx" type="default" formType="reset">Reset</button>
+    </view>
+  </form>
+
+</view>

@@ -44,12 +44,17 @@ Page({
     var that = this;
     var uid = e.detail.value.uid;
     var pid = e.detail.value.pid;
+    var openid = wx.getStorageSync('openid');
     wx.request({
       url: 'http://localhost:8080/reback',
-      method: 'GET',
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+      },
       data: {
         pid: pid,
-        uid: uid
+        uid: uid,
+        openid: openid
       },
       success: function (res) {
         var resultCode = res.statusCode;
@@ -61,7 +66,7 @@ Page({
             duration: 2000 //弹出时间
           });
           wx.switchTab({
-            url: '/pages/borrow/borrow',
+            url: '/pages/record/record',
           });
 
         } else {

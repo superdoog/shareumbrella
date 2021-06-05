@@ -76,13 +76,18 @@ Page({
     var pid = e.detail.value.pid; //获取表数据
     var uid = e.detail.value.uid;
     var url = that.data.borrowUrl;
+    var openid = wx.getStorageSync('openid');
 
     wx.request({
       url: url,
-      data: { pid: pid, uid: uid },
-      method: 'GET',
+      data: {
+        pid: pid,
+        uid: uid,
+        openid: openid
+      },
+      method: 'POST',
       header: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       success: function (res) {
         console.log(res);

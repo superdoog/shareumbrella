@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/record/record",
+    "pages/register/register",
     "pages/borrow/borrow",
     "pages/reback/reback",
     "pages/borrowSc/borrowSc",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "tabBar": {
@@ -11,6 +13,10 @@
       {
         "pagePath": "pages/borrow/borrow",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "text": "记录"
       },
       {
         "pagePath": "pages/reback/reback",
