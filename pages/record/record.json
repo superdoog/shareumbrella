@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "借伞记录",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {}
+}

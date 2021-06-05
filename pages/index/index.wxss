@@ -1,19 +1,26 @@
-/**index.wxss**/
-.userinfo {
+page {
+  background: gainsboro;
+}
+.header {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 15px;
   align-items: center;
-  color: #aaa;
+  background: white;
 }
-
+.btn-login {
+  padding: 8%;
+  background: white;
+}
 .userinfo-avatar {
-  overflow: hidden;
+  border-radius: 128rpx;
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
+  margin-block-start: 10px;
 
-.usermotto {
-  margin-top: 200px;
+}
+.userinfo-nickname {
+  margin-top: 20rpx;
+  font-size: 38rpx;
 }

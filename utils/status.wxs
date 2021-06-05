@@ -1,0 +1,38 @@
+var getStatus = function (val) {
+    var status = ''
+    switch (val) {
+      case 0:
+        status = '未还'
+        break;
+      case 1:
+        status = '已还'
+        break;
+    }
+    return status
+}
+var getPointName = function (val) {
+    var status = ''
+    switch (val) {
+      case 1:
+        status = '竹一'
+        break;
+      case 2:
+        status = '康二'
+        break;
+      case 3:
+        status = '桂三'
+        break;
+      case 4:
+        status = '梅四'
+        break;
+      case 5:
+        status = '榕五'
+        break;
+    }
+    return status
+}
+
+module.exports = {
+  getStatus: getStatus,
+  getPointName: getPointName
+}

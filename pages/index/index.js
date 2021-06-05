@@ -1,48 +1,98 @@
-// index.js
-// 获取应用实例
-const app = getApp()
-
 Page({
+  // 页面的初始数据
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    isShowUserName: false,
+    userInfo: null,
+    userOpenid: null,
+    user:null,
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
+
+  /**
+    * 生命周期函数--监听页面加载
+    */
+  onLoad: function (options) {
+    var that = this;
+
+    wx.login({
+      success(res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'http://localhost:8080/getOpenid',
+            data: {
+              code: res.code
+            },
+            success(data) {
+              // wx.showToast({
+              //   title: '获取openid成功',
+              //   icon: 'success',
+              //   duration: 2000
+              // })
+              // console.log("openid:" + data.data['openid'])
+              that.setData({
+                userOpenid: data.data['openid'],
+                user: data.data['user']
+              })
+              wx.setStorageSync('openid', data.data['openid']) //保存openid到本地缓存
+              wx.setStorageSync('user', data.data['user'])
+            }, fail(data) {
+              wx.showToast({
+                title: '获取openid失败',
+                icon: 'error',
+                duration: 2000
+              })
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
     })
+
   },
-  onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
+
+
+  //获取用户信息
+  getUserProfile() {
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log("获取用户信息成功", res)
+        let userInfo = res.userInfo
+        wx.setStorageSync('userInfo', userInfo) //保存用户信息到本地缓存
+        this.setData({
+          isShowUserName: true,
+          userInfo: userInfo,
+        })
+      },
+      fail: res => {
+        console.log("获取用户信息失败", res)
+      }
+    })
+    // var openid = wx.getStorageSync('openid');
+    // console.log(Object.is(openid));
+    if (this.data.user !== null && this.data.user !== undefined && this.data.user !== '') {
+      wx.switchTab({
+        url: "/pages/borrow/borrow",
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/register/register',
       })
     }
   },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
+
+
+  onShow(options) {
+    // this.getUserProfile()
+    // var user = wx.getStorageSync('user'); //从本地缓存取用户信息
+    // if (user && user.nickName) { //如果本地缓存有信息就显示本地缓存
+    //   this.setData({
+    //     isShowUserName: true,
+    //     userInfo: user,
+    //   })
+    // }
   },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+
+
 })
