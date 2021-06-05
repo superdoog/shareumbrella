@@ -67,6 +67,7 @@ Page({
           });
           wx.switchTab({
             url: '/pages/record/record',
+
           });
 
         } else {
